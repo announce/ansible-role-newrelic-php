@@ -19,7 +19,7 @@
     NR_INSTALL_SILENT: true
 
 - name: Configure New Relic Daemon
-  copy: src=/etc/newrelic/newrelic.cfg.template dest=/etc/newrelic/newrelic.cfg
+  shell: creates=/tmp/hoge.conf cp /etc/newrelic/newrelic.cfg.template /etc/newrelic/newrelic.cfg
   notify:
     - Restart New Relic Daemon
   when: newrelic_loaded_os_family|default(False) != False
